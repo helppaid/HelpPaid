@@ -3,112 +3,301 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HelpAid</title>
+  <title>HelpAid - Emergency Humanitarian Relief</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg-dark: #07090e;
+      --card-bg: #121824;
+      --card-border: #1e293b;
+      --accent: #fcd535; /* Binance Yellow */
+      --whatsapp: #25d366;
+      --whatsapp-hover: #1eb757;
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+      --danger-glow: rgba(239, 68, 68, 0.12);
+      --danger-border: rgba(239, 68, 68, 0.25);
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     body {
-      background-color: #121212;
-      font-family: Arial, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 16px;
       line-height: 1.6;
-      padding: 20px;
     }
-    .navbar {
-      background-color: #ffd700;
-      padding: 20px;
-      border-radius: 8px;
+
+    .wrapper {
+      width: 100%;
+      max-width: 650px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 32px 24px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    .brand {
       text-align: center;
       margin-bottom: 24px;
     }
-    h1 {
-      color: #b30000;
-      font-size: 2.5rem;
-      margin-bottom: 5px;
+
+    .brand h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    h6 {
-      color: #4a4a4a;
-      font-size: 1rem;
-      font-style: italic;
+
+    .brand p {
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 4px;
     }
-    .content {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 10px;
-    }
-    p {
-      color: #ffffff;
-      font-size: 1.1rem;
-      margin-bottom: 15px;
-    }
-    .highlight {
-      font-weight: bold;
-      color: #ffd700;
-    }
-    .contact-section {
-      background-color: #1e1e1e;
-      padding: 20px;
-      border-radius: 8px;
-      margin-top: 30px;
-      border-left: 4px solid #ffd700;
-    }
-    .btn-container {
+
+    /* Media Showcase */
+    .media-gallery {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      margin-top: 15px;
+      gap: 16px;
+      margin-bottom: 24px;
     }
-    .btn-link {
-      display: inline-block;
+
+    .media-container {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      background: #000;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+
+    .media-container img {
+      width: 100%;
+      height: auto;
+      max-height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Story & Appeal Text */
+    .story-box {
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 16px;
+      padding: 24px 20px;
+      margin-bottom: 24px;
+    }
+
+    .story-box p {
+      color: #cbd5e1;
+      font-size: 0.98rem;
+      margin-bottom: 16px;
+    }
+
+    .story-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .urgent-badge {
+      background-color: var(--danger-glow);
+      border: 1px solid var(--danger-border);
+      color: #fca5a5;
+      padding: 16px;
+      border-radius: 12px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      margin: 18px 0;
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 16px;
       text-align: center;
-      color: #ffffff;
-      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    /* Binance & Crypto Block */
+    .binance-card {
+      background: #0b0f17;
+      border: 1px solid rgba(252, 213, 53, 0.2);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .qr-wrapper {
+      margin: 12px auto 16px auto;
+      display: inline-block;
+      background: #ffffff;
+      padding: 10px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .qr-wrapper img {
+      width: 160px;
+      height: 160px;
+      object-fit: contain;
+      display: block;
+      border-radius: 6px;
+    }
+
+    .info-group {
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    .info-label {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .info-field {
+      background-color: #151c2c;
+      border: 1px solid var(--card-border);
+      color: var(--accent);
+      font-family: monospace;
+      font-size: 0.88rem;
+      padding: 10px 12px;
+      border-radius: 8px;
+      word-break: break-all;
+      margin-bottom: 12px;
+    }
+
+    /* Action Buttons */
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
       text-decoration: none;
-      font-weight: bold;
-      border-radius: 4px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
-    .btn-donation {
-      background-color: #b30000;
-    }
-    .btn-donation:hover {
-      background-color: #e60000;
-    }
+
     .btn-whatsapp {
-      background-color: #25d366;
+      background-color: var(--whatsapp);
+      color: #ffffff;
     }
+
     .btn-whatsapp:hover {
-      background-color: #20ba5a;
+      background-color: var(--whatsapp-hover);
+      transform: translateY(-2px);
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: var(--text-sub);
+    }
+
+    .footer-note span {
+      color: var(--text-main);
+      font-weight: 600;
     }
   </style>
 </head>
 <body>
 
-  <nav class="navbar">
-    <h1>HelpAid</h1>
-    <h6>help for the good of humanity...</h6>
-  </nav>
-
-  <main class="content">
-    <p>Hello everyone. Thank you for visiting this page. I am reaching out to talk about a friend of mine, Nimeh Mahdi, who is currently facing an extremely difficult crisis due to the ongoing war.</p>
-    
-    <p>Nimeh and her family have lost almost everything—their home, their livelihood, and their financial stability have been completely destroyed by the conflict. To make things even more critical, they are facing an immediate threat of eviction and have nowhere left to go.</p>
-    
-    <p class="highlight">The most urgent matter right now is her young child's health. His medical condition is worsening every day. He requires continuous daily medical treatment and needs urgent surgery that the family cannot afford under their current circumstances.</p>
-    
-    <p>They are mentally exhausted and running out of options. Every single donation or share makes a massive difference. We are trying to raise funds to help cover their immediate living costs and secure the urgent medical care her child desperately needs. Please consider helping this family in their hour of need.</p>
-
-    <div class="contact-section">
-      <p><strong>How to support:</strong></p>
-      <p>You can contact her directly or access the verified platform through the links below:</p>
+  <div class="wrapper">
+    <div class="card">
       
-      <div class="btn-container">
-        <a href="https://wa.me/972594048879" target="_blank" class="btn-link btn-whatsapp">Contact via WhatsApp</a>
-        <a href="https://share.google/rYu5wjcV7cmdfZaDC" target="_blank" class="btn-link btn-donation">Access Support Link</a>
-      </div>
+      <header class="brand">
+        <h1>HelpAid</h1>
+        <p>Emergency Humanitarian Relief</p>
+      </header>
+
+      <main>
+        <!-- Galeria de Imagens (Hospital + Binance QR) -->
+        <div class="media-gallery">
+          <div class="media-container">
+            <!-- Salve a foto do hospital na mesma pasta como 'hospital.jpg' -->
+            <img src="hospital.jpg" alt="Child receiving medical treatment in hospital">
+          </div>
+        </div>
+
+        <!-- Texto de Apelo Longo e Detalhado -->
+        <div class="story-box">
+          <p>A mother in Gaza has lost everything due to the war and is now enduring unimaginable hardship, living in a fragile tent with virtually no protection from the scorching heat or bitter rain.</p>
+          
+          <p>Beyond the destruction of their home, her daily reality is an endless fight for survival. She is desperately trying to care for her family under brutal conditions, carrying the heavy weight of absolute scarcity.</p>
+          
+          <div class="urgent-badge">
+            ⚠️ <strong>Critical Medical Appeal:</strong> She is caring for a sick family member suffering from dangerously high blood potassium levels, requiring constant medical supervision, specialized care, and treatments that are currently completely out of reach.
+          </div>
+          
+          <p>Every single contribution—no matter how small—directly helps provide lifesaving medicine, nutritional food, and basic shelter essentials to keep this family alive.</p>
+          
+          <p>Your empathy, solidarity, and share can truly change a life in this darkest hour. Thank you from the bottom of our hearts for your profound kindness and support.</p>
+        </div>
+
+        <!-- Seção de Doação Binance -->
+        <div class="section-title">💛 Donate Securely via Binance (USD / Crypto)</div>
+
+        <div class="binance-card">
+          <div class="qr-wrapper">
+            <!-- Salve o QR Code da Binance na mesma pasta como 'binance-qr.jpg' -->
+            <img src="binance-qr.jpg" alt="Binance QR Code">
+          </div>
+
+          <div class="info-group">
+            <div class="info-label">Binance ID</div>
+            <div class="info-field">1116033506</div>
+
+            <div class="info-label">Wallet Address / Pay Info (USD/Crypto)</div>
+            <div class="info-field">0x42ee7bd3fda38b8dba0633bd3413617e5718e0a5</div>
+          </div>
+        </div>
+
+        <!-- Botão de Contato / Confirmação -->
+        <a href="https://wa.me/972594048879" target="_blank" class="btn btn-whatsapp">
+          💬 Contact via WhatsApp (+972 59-404-8879)
+        </a>
+
+        <div class="footer-note">
+          Direct Contact & Verification: <span>+972 59-404-8879</span>
+        </div>
+      </main>
+
     </div>
-  </main>
+  </div>
 
 </body>
 </html>
